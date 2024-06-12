@@ -1,4 +1,4 @@
-package com.wang.train.member.Aspect;
+package com.wang.train.common.Aspect;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.support.spring.PropertyPreFilters;
