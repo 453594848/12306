@@ -1,13 +1,13 @@
-package com.example.train12306;
+package com.wang.train.member;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Train12306Application {
+public class MemberApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Train12306Application.class, args);
+        SpringApplication.run(MemberApplication.class, args);
     }
 
 }
