@@ -3,6 +3,7 @@ package com.wang.train.member.service.impl;
 import com.wang.train.member.domain.Member;
 import com.wang.train.member.domain.MemberExample;
 import com.wang.train.member.mapper.MemberMapper;
+import com.wang.train.member.req.MemberRegisterReq;
 import com.wang.train.member.service.MemberService;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -21,7 +22,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public long register(String mobile){
+    public long register(MemberRegisterReq req) {
+        String mobile = req.getMobile();
         MemberExample memberExample = new MemberExample();
         memberExample.createCriteria().andIdEqualTo(Long.valueOf(mobile));
         List<Member> members = memberMapper.selectByExample(memberExample);
@@ -35,4 +37,5 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.insert(member);
 
     }
+
 }
