@@ -41,6 +41,11 @@
                 <groupId>com.train</groupId>
                 <artifactId>common</artifactId>
             </dependency>
+                     <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.8.10</version>
+            </dependency>
              <!-- 集成mysql连接 -->
             <dependency>
                 <groupId>mysql</groupId>

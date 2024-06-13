@@ -1,9 +1,11 @@
 package com.wang.train.member.service.impl;
 
+import com.wang.train.member.domain.Member;
+import com.wang.train.member.domain.MemberExample;
 import com.wang.train.member.mapper.MemberMapper;
 import com.wang.train.member.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -16,5 +18,21 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public int count() {
         return Math.toIntExact(memberMapper.countByExample(null));
+    }
+
+    @Override
+    public long register(String mobile){
+        MemberExample memberExample = new MemberExample();
+        memberExample.createCriteria().andIdEqualTo(Long.valueOf(mobile));
+        List<Member> members = memberMapper.selectByExample(memberExample);
+        if (!members.isEmpty()){
+            throw new RuntimeException("手机号已注册");
+        }
+
+        Member member = new Member();
+        member.setId(System.currentTimeMillis());
+        member.setMobile(mobile);
+        return memberMapper.insert(member);
+
     }
 }
