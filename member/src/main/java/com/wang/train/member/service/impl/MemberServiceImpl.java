@@ -1,5 +1,6 @@
 package com.wang.train.member.service.impl;
 
+import cn.hutool.core.util.IdUtil;
 import com.wang.train.member.domain.Member;
 import com.wang.train.member.domain.MemberExample;
 import com.wang.train.member.mapper.MemberMapper;
@@ -32,9 +33,9 @@ public class MemberServiceImpl implements MemberService {
         }
 
         Member member = new Member();
-        member.setId(System.currentTimeMillis());
+        member.setId(IdUtil.getSnowflakeNextId());
         member.setMobile(mobile);
-        return memberMapper.insert(member);
+        return member.getId();
 
     }
 
