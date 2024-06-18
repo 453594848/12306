@@ -19,6 +19,7 @@ public class ControllerExceptionHandler {
 
     /**
      * 所有异常统一处理
+     *
      * @param e
      * @return
      */
@@ -37,6 +38,15 @@ public class ControllerExceptionHandler {
         return commonResp;
     }
 
+    @ExceptionHandler(value = BindException.class)
+    @ResponseBody
+    public CommonResp exceptionHandler(BindException e) throws Exception {
+        CommonResp commonResp = new CommonResp();
+        LOG.error("校验异常：", e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
+        commonResp.setSuccess(false);
+        commonResp.setMessage( e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
+        return commonResp;
+    }
 
 
 }
